@@ -1,0 +1,38 @@
+#include <LiquidCrystal.h>
+
+const int rs = 2, 
+          en = 3, 
+          d4 = 6, 
+          d5 = 7, 
+          d6 = 8, 
+          d7 = 9;
+
+int ButtonValue = 0;
+int Button = 10;
+LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
+
+void setup() {
+  lcd.begin(16, 2);
+  Serial.begin(9600);
+    lcd.setCursor(0, 0);
+  lcd.print("Hello world");
+  pinMode(Button, INPUT);
+}
+
+void loop(){
+  ButtonValue = digitalRead(Button);
+  delay(250);
+  if(ButtonValue != 0) {
+    lcd.begin(16, 2);
+    Serial.begin(9600);
+    lcd.setCursor(0, 0);
+    lcd.print("not Hello world");
+
+  }
+  else{
+    lcd.begin(16, 2);
+    Serial.begin(9600);
+    lcd.setCursor(0, 0);
+    lcd.print("Hello world");
+  }
+}
